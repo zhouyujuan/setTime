@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>时钟</title>
+    <style type="text/css">
+    div {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .images img {
+        display: inline-block;
+        width: 30px;
+        height: 44px;
+        vertical-align: middle;
+    }
+
+    .images span {
+        font-size: 30px;
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="images">
+        <!-- 时 -->
+        <img src="img/0.png" />
+        <img src="img/0.png" />
+        <span>:</span>
+        <!-- 分 -->
+        <img src="img/0.png" />
+        <img src="img/0.png" />
+        <span>:</span>
+        <!-- 秒 -->
+        <img src="img/0.png" />
+        <img src="img/0.png" />
+    </div>
+    <script type="text/javascript">
+    var imgs = document.getElementsByTagName('img');
+    console.log('img', imgs);
+
+    setInterval(getTime, 1000);
+
+    function getTime() {
+        var time = new Date();
+        var h = time.getHours();
+        var m = time.getMinutes();
+        var s = time.getSeconds();
+        var times = "" + auto(h) + auto(m) + auto(s);
+        for (var i = 0; i < times.length; i++) {
+            imgs[i].src = "img/" + times[i] + '.png';
+        }
+    }
+    getTime();
+
+    function auto(time) {
+        return time < 10 ? "0" + time : time;
+    }
+    </script>
+</body>
+
+</html>
